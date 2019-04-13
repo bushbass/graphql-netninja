@@ -1,18 +1,18 @@
-import React, { Component } from "react";
-import { graphql, compose } from "react-apollo";
+import React, { Component } from 'react';
+import { graphql, compose } from 'react-apollo';
 import {
   getAuthorsQuery,
   addBookMutation,
   getBooksQuery
-} from "../queries/queries";
+} from '../queries/queries';
 
 class AddBook extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: "",
-      genre: "",
-      authorId: ""
+      name: '',
+      genre: '',
+      authorId: ''
     };
   }
   displayAuthors() {
@@ -61,6 +61,7 @@ class AddBook extends Component {
         </div>
 
         <div className="field">
+          <label>Author</label>
           <select
             onChange={event => this.setState({ authorId: event.target.value })}
           >
@@ -68,7 +69,6 @@ class AddBook extends Component {
             {this.displayAuthors()}
           </select>
         </div>
-
         <button>+</button>
       </form>
     );
@@ -76,6 +76,6 @@ class AddBook extends Component {
 }
 
 export default compose(
-  graphql(getAuthorsQuery, { name: "getAuthorsQuery" }),
-  graphql(addBookMutation, { name: "addBookMutation" })
+  graphql(getAuthorsQuery, { name: 'getAuthorsQuery' }),
+  graphql(addBookMutation, { name: 'addBookMutation' })
 )(AddBook);
